@@ -1,0 +1,72 @@
+{
+    "name": "openindefaulteditor",
+    "displayName": "Open selected resource in default editor (MS Windows only)",
+    "icon": "images/icon.png",
+    "description": "VS Code extention to open selected resource (file or folder) in default editor (MS Windows only).",
+    "version": "1.0.0",
+    "publisher": "sandipchitale",
+    "author": {
+        "name": "Sandip Chitale"
+    },
+    "maintainers": [
+        "Sandip Chitale <sandipchitale@gmail.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sandipchitale/openindefaulteditor"
+    },
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.openindefaulteditor"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.openindefaulteditor",
+                "title": "Open in Default Editor (MS Windows)"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "extension.openindefaulteditor",
+                    "group": "navigation@1",
+                    "when": "isWindows"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "command": "extension.openindefaulteditor",
+                    "group": "navigation@1",
+                    "when": "isWindows"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "extension.openindefaulteditor",
+                    "group": "navigation@1",
+                    "when": "isWindows"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
