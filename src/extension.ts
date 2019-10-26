@@ -19,14 +19,24 @@ export function deactivate() {
 }
 
 function openInDefaultEditor(uri) {
-    if (uri) {
-        child_process.spawn('cmd',
-            [
-                '/S',
-                '/C',
-                'start',
-                '""',
-                '' + uri.fsPath + ''
-            ]);
+    if (uri && uri.scheme === 'file') {
+        let consoleProcess;
+        if (process.platform === 'win32') {
+            consoleProcess = child_process.spawn('cmd',
+                [
+                    '/S',
+                    '/C',
+                    'start',
+                    '""',
+                    '' + uri.fsPath + ''
+                ]);
+        } else if (process.platform === 'darwin') {
+            consoleProcess = child_process.spawn('open', [ uri.fsPath ]);
+        } else if (process.platform === 'linux') {
+            consoleProcess = child_process.spawn('gnome-open', [ uri.fsPath ]);
+        }
+        consoleProcess.on('exit', (code) => {
+            console.info(code);
+        });
     }
 }

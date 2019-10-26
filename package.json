@@ -1,9 +1,9 @@
 {
     "name": "openindefaulteditor",
-    "displayName": "Open selected resource in default editor (MS Windows only)",
+    "displayName": "Open selected resource in default editor",
     "icon": "images/icon.png",
-    "description": "VS Code extention to open selected resource (file or folder) in default editor (MS Windows only).",
-    "version": "1.0.1",
+    "description": "VS Code extention to open selected resource (file or folder) in default editor.",
+    "version": "1.0.2",
     "publisher": "sandipchitale",
     "author": {
         "name": "Sandip Chitale"
@@ -29,7 +29,7 @@
         "commands": [
             {
                 "command": "extension.openindefaulteditor",
-                "title": "Open in Default Editor (MS Windows)",
+                "title": "Open in Default Editor",
                 "category": "Desktop Integration"
             }
         ],
@@ -37,21 +37,21 @@
             "editor/context": [
                 {
                     "command": "extension.openindefaulteditor",
-                    "when": "isWindows && isFileSystemResource",
+                    "when": "isFileSystemResource",
                     "group": "navigation"
                 }
             ],
             "editor/title/context": [
                 {
                     "command": "extension.openindefaulteditor",
-                    "when": "isWindows && isFileSystemResource",
+                    "when": "isFileSystemResource",
                     "group": "navigation"
                 }
             ],
             "explorer/context": [
                 {
                     "command": "extension.openindefaulteditor",
-                    "when": "isWindows && isFileSystemResource",
+                    "when": "isFileSystemResource",
                     "group": "navigation"
                 }
             ]
